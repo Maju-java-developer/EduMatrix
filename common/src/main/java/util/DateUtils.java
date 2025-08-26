@@ -545,6 +545,7 @@ public class DateUtils {
      * @return the double
      * @deprecated available in String configs
      */
+    @Deprecated
     public static Double stringToDouble(String doubleValue) {
         if (StringUtils.isNumeric(doubleValue)) {
             return Double.parseDouble(doubleValue);

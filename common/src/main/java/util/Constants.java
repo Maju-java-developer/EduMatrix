@@ -11,4 +11,7 @@ public class Constants {
     public static final String USER_RESPONSE_CLAIM = "userRespDTO";
     public static final String USER_AGENT_CLAIM = "User-Agent";
 
+    // Can Access endpoint without token
+    public static String[] WHITELIST_ENDPOINTS = new String[]{"/auth/login", "/auth/register", "/actuator/*"};
+
 }

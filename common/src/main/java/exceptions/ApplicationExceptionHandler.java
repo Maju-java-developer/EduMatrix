@@ -88,8 +88,8 @@ public class ApplicationExceptionHandler {
      * @return response
      */
 
-    @ExceptionHandler(MvrGenericException.class)
-    public ResponseEntity<Object> handleException(MvrGenericException exception) {
+    @ExceptionHandler(EduMatrixGenericException.class)
+    public ResponseEntity<Object> handleException(EduMatrixGenericException exception) {
         exception.printStackTrace();
         return ResponseUtil.returnResponse(exception);
     }
@@ -102,28 +102,6 @@ public class ApplicationExceptionHandler {
         response.put("message", exception.getMessage());
         return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
     }
-
-//    /**
-//     * @param ex      the exception
-//     * @param headers the headers to be written to the response
-//     * @param status  the selected response status
-//     * @param request the current request
-//     * @return response
-//     * @author Majid.Qutrio
-//     */
-//    @Override
-//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-//        ex.printStackTrace();
-//        Map<String, Object> errors = new HashMap<>();
-//        errors.put("code", StatusEnum.FAILURE);
-//        errors.put("timestamp", DateUtils.getCurrentTimestamp());
-//        ex.getBindingResult().getAllErrors().forEach(error -> {
-//            String fieldName = ((FieldError) error).getField();
-//            String errorMessage = error.getDefaultMessage();
-//            errors.put(fieldName, errorMessage);
-//        });
-//        return new ResponseEntity<>(errors, HttpStatus.OK);
-//    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {

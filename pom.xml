@@ -18,8 +18,9 @@
 
     <modules>
         <module>common</module>
-        <module>authentication</module>
+        <module>security</module>
         <module>student</module>
+        <module>fees</module>
     </modules>
 
     <properties>
