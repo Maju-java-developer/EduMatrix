@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: EDU-MATRIX-DISCOVERY-SERVICE
+  cloud:
+    gateway:
+      server:
+        webflux:
+          enabled: false
+eureka:
+  instance:
+    prefer-ip-address: false
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://192.168.1.139:8082/eureka/
+
+
+
