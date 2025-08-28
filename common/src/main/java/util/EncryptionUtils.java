@@ -14,7 +14,7 @@ import java.util.Base64;
 
 public class EncryptionUtils {
 
-    static String keyText = "EDUMATRIXSYSTEM";
+    static String keyText = "MOTORVEHICLEREGISTRATION";
 
     public static String encryptAES(String plainText) throws Exception {
         byte[] keyBytes = keyText.getBytes("UTF-8");

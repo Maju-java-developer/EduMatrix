@@ -38,14 +38,6 @@ public class AuthController {
         }
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<?> me(@RequestHeader(name = "Authorization", required = false) String auth) {
-        if (auth == null || !auth.startsWith("Bearer ")) return ResponseEntity.status(401).build();
-        var claims = authService; // placeholder to keep logic simple
-        // Better approach: call JwtService.parse here (expose JwtService via controller or service)
-        return ResponseEntity.ok().build();
-    }
-
     @PostMapping("/getAllUsers")
     public ResponseEntity<?> getAllUsers() {
         var users = userService.getAllUsers();
