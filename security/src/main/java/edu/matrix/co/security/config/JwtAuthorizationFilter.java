@@ -20,7 +20,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import util.Constants;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -37,9 +36,10 @@ class JwtAuthorizationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws IOException, ServletException {
-        final String authHeader = request.getHeader("Authorization");
+        // this token come from api-gateway.!
         final String ACCESS_TOKEN = request.getHeader("ACCESS-TOKEN");
-
+        final String authHeader = request.getHeader("Authorization");
+        final String requestAgent = request.getHeader(Constants.USER_AGENT_CLAIM);
 
         if (isRequestComingFromGateway(ACCESS_TOKEN)) {
             logger.info("Access the service via Api-gateway");
@@ -66,6 +66,13 @@ class JwtAuthorizationFilter extends OncePerRequestFilter {
         if (!jwtHelper.validateToken(jwt)) {
             logger.info("Token is expired");
             sendResponse(response, "Token is expired", StatusEnum.FAILURE, HttpStatus.OK.value());
+            return;
+        }
+
+        /* Checking Is Agent Valid **/
+        if (!jwtHelper.getAgentFromToken(jwt).equals(requestAgent)){
+            logger.info("Token-Agent is invalid");
+            sendResponse(response, "Token-Agent is invalid", StatusEnum.FAILURE, HttpStatus.OK.value());
             return;
         }
 
