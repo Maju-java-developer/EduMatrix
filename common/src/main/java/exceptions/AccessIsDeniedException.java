@@ -1,6 +1,6 @@
 package exceptions;
 /*
- *@author Shahzeb.Iqbal
+ *@author Majid.Hussain
  *@since 7/6/2023
  *@type AccessDeniedException
  */

@@ -1,8 +1,10 @@
 package edu.matrix.co.security.services;
 
+import edu.matrix.co.entity.security.UserEntity;
 import edu.matrix.co.security.config.JwtHelper;
 import edu.matrix.co.security.dtos.JwtResponse;
-import edu.matrix.co.security.entity.UserEntity;
+import edu.matrix.co.security.dtos.LoginRequest;
+import edu.matrix.co.security.dtos.RegisterRequest;
 import edu.matrix.co.security.repository.UserRepository;
 import enums.RoleEnum;
 import exceptions.EduMatrixGenericException;
@@ -10,8 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
-import edu.matrix.co.security.dtos.LoginRequest;
-import edu.matrix.co.security.dtos.RegisterRequest;
 
 @Service
 public class AuthService {

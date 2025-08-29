@@ -1,13 +1,18 @@
-package edu.matrix.co.security.entity;
+package edu.matrix.co.entity.security;
 
+import edu.matrix.co.entity.common.AbstractEntity;
 import enums.RoleEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
-public class UserEntity {
+@Table(name = "USERS")
+public class UserEntity extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
