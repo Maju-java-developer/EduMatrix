@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Class StringUtils
  *
- * @author Shahzeb Iqbal
+ * @author Majid.Hussain
  * @Date 6/19/2023
  */
 public class StringUtils {
@@ -216,7 +216,7 @@ public class StringUtils {
      *
      * @param obj (Object)
      * @return Object if exist otherwise Empty string will be return
-     * @author Majid.Hussain & Amir Hamza
+     * @author Majid.HussainMajid.Hussain & Amir Hamza
      * @since 28-12-2023
      */
     public static Object isNull(Object obj) {

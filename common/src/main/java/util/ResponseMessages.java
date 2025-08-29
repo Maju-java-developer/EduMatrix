@@ -3,7 +3,7 @@ package util;
 /**
  * Class ResponseMessages
  *
- * @author Shahzeb Iqbal
+ * @author Majid.Hussain
  * @Date 6/19/2023
  */
 public final class ResponseMessages {

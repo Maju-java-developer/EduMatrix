@@ -8,7 +8,7 @@ import lombok.Setter;
 /**
  * Pagination request dto.
  *
- * @author Ahsan.Iqbal
+ * @author Majid.Hussain
  * @since 31-05-2023
  */
 

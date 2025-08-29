@@ -1,6 +1,6 @@
 package util;
 /*
- *@author Shahzeb.Iqbal
+ *@author Majid.Hussain
  *@since 8/10/2023
  *@type MvrJsonUtility
  */

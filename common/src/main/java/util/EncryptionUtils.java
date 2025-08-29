@@ -1,7 +1,7 @@
 package util;
 /**
  *
- *@author Shahzeb.Iqbal
+ *@author Majid.Hussain
  *@since 6/27/2023
  *@type EncryptionUtils
  */

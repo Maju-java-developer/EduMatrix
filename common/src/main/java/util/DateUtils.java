@@ -16,7 +16,7 @@ import java.util.Date;
 /**
  * Class DateUtils
  *
- * @author Shahzeb Iqbal
+ * @author Majid.Hussain
  * @date 6/19/2023
  */
 @SuppressWarnings({"all"})
