@@ -10,7 +10,7 @@
     </parent>
     <groupId>edu.matrix.co</groupId>
     <artifactId>edu-api-gateway</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>edu-api-gateway</name>
     <description>edu-api-gateway</description>
     <properties>
