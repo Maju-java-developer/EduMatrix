@@ -19,7 +19,9 @@
     <modules>
         <module>common</module>
         <module>security</module>
-        <module>student</module>
+        <module>edu-api-gateway</module>
+        <module>edu-service-registry</module>
+        <module>services</module>
         <module>fees</module>
     </modules>
 
