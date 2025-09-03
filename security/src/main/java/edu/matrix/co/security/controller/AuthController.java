@@ -1,7 +1,7 @@
 package edu.matrix.co.security.controller;
 
-import edu.matrix.co.security.dtos.LoginRequest;
-import edu.matrix.co.security.dtos.RegisterRequest;
+import authentication.dtos.LoginRequest;
+import authentication.dtos.RegisterRequest;
 import edu.matrix.co.security.services.AuthService;
 import edu.matrix.co.security.services.UserService;
 import jakarta.validation.Valid;

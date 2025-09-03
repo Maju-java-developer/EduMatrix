@@ -3,10 +3,6 @@ package edu.matrix.co.entity.security;
 import edu.matrix.co.entity.common.AbstractEntity;
 import enums.RoleEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.Set;
 

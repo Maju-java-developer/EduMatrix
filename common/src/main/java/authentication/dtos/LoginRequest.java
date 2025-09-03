@@ -1,4 +1,4 @@
-package edu.matrix.co.security.dtos;
+package authentication.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

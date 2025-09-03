@@ -1,10 +1,10 @@
 package edu.matrix.co.security.services;
 
+import authentication.dtos.JwtResponse;
+import authentication.dtos.LoginRequest;
+import authentication.dtos.RegisterRequest;
 import edu.matrix.co.entity.security.UserEntity;
 import edu.matrix.co.security.config.JwtHelper;
-import edu.matrix.co.security.dtos.JwtResponse;
-import edu.matrix.co.security.dtos.LoginRequest;
-import edu.matrix.co.security.dtos.RegisterRequest;
 import edu.matrix.co.security.repository.UserRepository;
 import enums.RoleEnum;
 import exceptions.EduMatrixGenericException;
