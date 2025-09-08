@@ -18,10 +18,12 @@
 
     <modules>
         <module>common</module>
-        <module>security</module>
+        <module>cores</module>
         <module>edu-api-gateway</module>
         <module>edu-service-registry</module>
+        <module>security</module>
         <module>services</module>
+        <module>serviceImpl</module>
         <module>fees</module>
     </modules>
 
@@ -51,6 +53,56 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>common</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>cores</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>edu-api-gateway</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>edu-service-registry</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>entity</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>security</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>services</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>serviceImpl</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.matrix.co</groupId>
+                <artifactId>fees</artifactId>
+                <version>0.0.1</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
