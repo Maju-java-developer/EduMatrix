@@ -1,7 +1,7 @@
 package edu.matrix.co.security.services;
 
+import edu.matrix.co.cores.security.repository.UserRepository;
 import edu.matrix.co.entity.security.UserEntity;
-import edu.matrix.co.security.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
