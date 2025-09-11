@@ -4,7 +4,7 @@ package edu.matrix.co.eduapigateway.config;
  * @type PrePostFilter
  */
 
-import config.Encryption;
+import edu.matrix.co.eduapigateway.utils.Encryption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;

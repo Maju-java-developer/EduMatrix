@@ -3,9 +3,13 @@ package edu.matrix.co.entity.security;
 import edu.matrix.co.entity.common.AbstractEntity;
 import enums.RoleEnum;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "USERS")
 public class UserEntity extends AbstractEntity {
@@ -23,44 +27,4 @@ public class UserEntity extends AbstractEntity {
     private Set<RoleEnum> roles;
 
     private boolean enabled = true;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<RoleEnum> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<RoleEnum> roles) {
-        this.roles = roles;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
 }
