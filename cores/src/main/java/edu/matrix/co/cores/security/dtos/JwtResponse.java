@@ -1,4 +1,4 @@
-package authentication.dtos;
+package edu.matrix.co.cores.security.dtos;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
