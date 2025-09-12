@@ -15,6 +15,7 @@ import java.util.Set;
 public class UserEntity extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -26,5 +27,6 @@ public class UserEntity extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Set<RoleEnum> roles;
 
-    private boolean enabled = true;
+    @Column(name = "is_active")
+    private boolean isActive = true;
 }

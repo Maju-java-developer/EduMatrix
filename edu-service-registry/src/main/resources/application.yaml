@@ -1,6 +1,10 @@
 server:
   port: 8082
 
+application:
+  title: Edu Matrix Management
+  version: (0.0.1)
+
 spring:
   application:
     name: EDU-MATRIX-DISCOVERY-SERVICE
@@ -16,7 +20,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     service-url:
-      defaultZone: http://192.168.1.202:8082/eureka/
+      defaultZone: http://192.168.1.224:8082/eureka/
 
 
 
