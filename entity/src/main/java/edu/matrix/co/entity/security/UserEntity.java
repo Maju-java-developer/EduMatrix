@@ -1,32 +1,53 @@
 package edu.matrix.co.entity.security;
 
-import edu.matrix.co.entity.common.AbstractEntity;
-import enums.RoleEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
-import java.util.Set;
+import java.time.Instant;
 
-@Setter
 @Getter
+@Setter
 @Entity
-@Table(name = "USERS")
-public class UserEntity extends AbstractEntity {
+@Table(name = "users", schema = "edumatrix")
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Size(max = 150)
+    @NotNull
+    @Column(name = "full_name", nullable = false, length = 150)
+    private String fullName;
+
+    @Size(max = 150)
+    @Column(name = "email", length = 150)
     private String email;
 
-    private String password;
+    @Size(max = 20)
+    @Column(name = "phone", length = 20)
+    private String phone;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private Set<RoleEnum> roles;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "org_id")
+    private Organization org;
 
-    @Column(name = "is_active")
-    private boolean isActive = true;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "school_id")
+    private SchoolEntity schoolEntity;
+
+    @NotNull
+    @ColumnDefault("current_timestamp()")
+    @Column(name = "created_at", nullable = false)
+    private Instant createdAt;
+
+    @NotNull
+    @ColumnDefault("current_timestamp()")
+    @Column(name = "updated_at", nullable = false)
+    private Instant updatedAt;
+
 }

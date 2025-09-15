@@ -1,7 +1,7 @@
 package edu.matrix.co.cores.security.dtos;
 
 
-import enums.RoleEnum;
+import enums.UserRole;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +15,6 @@ public class RegisterRequest {
     public String email;
     @NotBlank(message = "Password cannot be null or empty")
     public String password;
-    public Set<RoleEnum> roles;
+    public Set<UserRole> roles;
 }
 

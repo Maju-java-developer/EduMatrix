@@ -1,8 +1,8 @@
 package enums;
 
-public enum RoleEnum {
+public enum UserRole {
     ADMIN,
     TEACHER,
     STUDENT,
-    ACCOUNTANT
+    OWNER
 }

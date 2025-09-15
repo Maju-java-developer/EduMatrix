@@ -1,7 +1,6 @@
 package edu.matrix.co.security.controller;
 
-import edu.matrix.co.cores.security.dtos.LoginRequest;
-import edu.matrix.co.cores.security.dtos.RegisterRequest;
+import edu.matrix.co.cores.security.dtos.LoginRequestDto;
 import edu.matrix.co.security.services.AuthService;
 import edu.matrix.co.security.services.UserService;
 import jakarta.validation.Valid;
@@ -24,21 +23,21 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest req) {
+    @PostMapping("/loginRegister")
+    public ResponseEntity<?> register(@Valid @RequestBody LoginRequestDto req) {
         authService.register(req);
-        return ResponseUtil.returnResponse("Registration Has been successfully done!");
+        return ResponseUtil.returnResponse("Login User Registration Has been successfully done!");
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest req) {
-        try {
-            var res = authService.login(req);
-            return ResponseEntity.ok(res);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(401).body(ex.getMessage());
-        }
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest req) {
+//        try {
+////            var res = authService.login(req);
+////            return ResponseEntity.ok(res);
+//        } catch (IllegalArgumentException ex) {
+//            return ResponseEntity.status(401).body(ex.getMessage());
+//        }
+//    }
 
     @PostMapping("/getAllUsers")
     public ResponseEntity<?> getAllUsers() {
