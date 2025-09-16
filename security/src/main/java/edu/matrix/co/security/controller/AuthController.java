@@ -3,13 +3,14 @@ package edu.matrix.co.security.controller;
 import edu.matrix.co.cores.security.dtos.LoginRequestDto;
 import edu.matrix.co.security.services.AuthService;
 import edu.matrix.co.security.services.UserService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import util.ResponseUtil;
+import util.ValidationGroup;
 
 @RestController
 @RequestMapping("/auth")
@@ -24,20 +25,20 @@ public class AuthController {
     }
 
     @PostMapping("/loginRegister")
-    public ResponseEntity<?> register(@Valid @RequestBody LoginRequestDto req) {
-        authService.register(req);
+    public ResponseEntity<?> register(@Validated(value = ValidationGroup.loginRegisterValidation.class) @RequestBody LoginRequestDto req) {
+        authService.loginRegister(req);
         return ResponseUtil.returnResponse("Login User Registration Has been successfully done!");
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest req) {
-//        try {
-////            var res = authService.login(req);
-////            return ResponseEntity.ok(res);
-//        } catch (IllegalArgumentException ex) {
-//            return ResponseEntity.status(401).body(ex.getMessage());
-//        }
-//    }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@Validated(value = ValidationGroup.loginValidation.class) @RequestBody LoginRequestDto req) {
+        try {
+            var res = authService.login(req);
+            return ResponseEntity.ok(res);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(401).body(ex.getMessage());
+        }
+    }
 
     @PostMapping("/getAllUsers")
     public ResponseEntity<?> getAllUsers() {

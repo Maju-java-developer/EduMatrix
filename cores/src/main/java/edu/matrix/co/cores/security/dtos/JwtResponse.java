@@ -1,17 +1,24 @@
 package edu.matrix.co.cores.security.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import org.apache.catalina.User;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class JwtResponse {
-    public String token;
-    public String email;
-    public List<String> roles;
-    public JwtResponse(String token, String email, List<String> roles) {
-        this.token = token; this.email = email; this.roles = roles;
+    private String token;
+    private UserDetailDto userDetails;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UserDetailDto {
+        private String userName;
+        private String userRole;
+        private Long organizationId;
+        private String organizationName;
     }
 }

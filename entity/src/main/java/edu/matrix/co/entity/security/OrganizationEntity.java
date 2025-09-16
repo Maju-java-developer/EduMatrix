@@ -16,10 +16,10 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "organizations", schema = "edumatrix")
-public class Organization {
+public class OrganizationEntity {
     @Id
     @Column(name = "org_id", nullable = false)
-    private Long id;
+    private Long orgId;
 
     @Size(max = 200)
     @NotNull

@@ -1,5 +1,6 @@
 package edu.matrix.co.cores.security.config;
 
+import edu.matrix.co.cores.security.dtos.JwtResponse;
 import io.jsonwebtoken.*;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,8 +13,6 @@ import util.EncryptionUtils;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 @Service
@@ -37,11 +36,10 @@ public class JwtHelper {
         secretKey = EncryptionUtils.encryptAES(secretKey);
     }
 
-    public String generateJwt(String subject, List<String> roles) {
+    public String generateJwtResponse(String subject) {
         Claims claims = Jwts.claims().setSubject(subject);
         String header = request.getHeader(Constants.USER_AGENT_CLAIM);
         claims.put(Constants.USER_AGENT_CLAIM, header);
-        claims.put(Constants.USER_ROLES, Map.of("roles", roles));
 
         Instant now = Instant.now();
         return Jwts.builder()
