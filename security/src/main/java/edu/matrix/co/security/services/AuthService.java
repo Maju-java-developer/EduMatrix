@@ -22,6 +22,10 @@ public class AuthService {
 
     public void loginRegister(LoginRequestDto req) {
         userRepository.findById(req.getUserId()).ifPresentOrElse(userEntity -> {
+            loginRepository.findById(req.getUserId()).ifPresent(loginEntity -> {
+                throw new EduMatrixGenericException("User is Already registered!");
+            });
+
             LoginEntity loginEntity = new LoginEntity();
             loginEntity.setUsername(req.getUsername());
             loginEntity.setUserId(userEntity.getId());

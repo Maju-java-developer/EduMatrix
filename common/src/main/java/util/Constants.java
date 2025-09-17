@@ -13,6 +13,6 @@ public class Constants {
     public static final String USER_ROLES = "User-Roles";
 
     // Can Access endpoint without token
-    public static String[] WHITELIST_ENDPOINTS = new String[]{"/auth/login", "/auth/register", "/actuator/*"};
+    public static String[] WHITELIST_ENDPOINTS = new String[]{"/auth/login", "/auth/loginRegister", "/actuator/*"};
 
 }
