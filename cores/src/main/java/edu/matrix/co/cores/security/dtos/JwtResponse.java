@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.User;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,6 +21,6 @@ public class JwtResponse {
     public static class UserDetailDto {
         private String userName;
         private String userRole;
-        private OrganizationResponseDto organizationResponseDto;
+        private List<SchoolDto> schoolDtos;
     }
 }

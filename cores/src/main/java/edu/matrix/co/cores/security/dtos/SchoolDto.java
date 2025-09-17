@@ -9,6 +9,6 @@ public class SchoolDto {
     private Long schoolId;
     private String schoolName;
     private List<CampusDto> campuses;
-
+    private RoleDto schoolRoles;
     // getters and setters
 }

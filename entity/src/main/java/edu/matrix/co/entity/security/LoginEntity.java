@@ -34,9 +34,11 @@ public class LoginEntity extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
 
+    // Relation to campuses
     @NotNull
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 
     @ColumnDefault("1")
     @Column(name = "is_active")

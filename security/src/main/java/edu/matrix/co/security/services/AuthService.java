@@ -23,13 +23,13 @@ public class AuthService {
     private final OrganizationService organizationService;
     public void loginRegister(LoginRequestDto req) {
         userRepository.findById(req.getUserId()).ifPresentOrElse(userEntity -> {
-            loginRepository.findById(req.getUserId()).ifPresent(loginEntity -> {
+            loginRepository.findByUserId(req.getUserId()).ifPresent(loginEntity -> {
                 throw new EduMatrixGenericException("User is Already registered!");
             });
 
             LoginEntity loginEntity = new LoginEntity();
             loginEntity.setUsername(req.getUsername());
-            loginEntity.setUserId(userEntity.getId());
+            loginEntity.setUser(userEntity);
             loginEntity.setPassword(encoder.encode(req.getPassword()));
             loginEntity.setUserRole(req.getUserRole());
             loginEntity.setIsActive(Boolean.TRUE);
@@ -45,7 +45,7 @@ public class AuthService {
                 .orElseThrow(() -> new EduMatrixGenericException("Invalid credentials"));
 
         // Step 1: Validate user existence
-        var users = userRepository.findById(loginUser.getUserId()).orElseThrow(() -> new EduMatrixGenericException("User not found"));
+        userRepository.findById(loginUser.getUser().getId()).orElseThrow(() -> new EduMatrixGenericException("User not found"));
 
         // Step 2: Validate password
         if (!encoder.matches(req.getPassword(), loginUser.getPassword())) {
@@ -61,7 +61,7 @@ public class AuthService {
         JwtResponse.UserDetailDto userDetails = new JwtResponse.UserDetailDto();
         userDetails.setUserName(loginUser.getUsername());
         userDetails.setUserRole(loginUser.getUserRole().name());
-        userDetails.setOrganizationResponseDto(organizationService.buildOrganizationData(users, loginUser.getUserRole()));
+        userDetails.setSchoolDtos(organizationService.buildOrganizationData(loginUser));
 
         // Step 5: Return structured response
         return new JwtResponse(token, userDetails);

@@ -7,6 +7,7 @@ import lombok.Data;
 public class CampusDto {
     private Long campusId;
     private String campusName;
+    private RoleDto campusesRoles;
 
     // getters and setters
 }
