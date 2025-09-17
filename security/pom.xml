@@ -73,6 +73,14 @@
             <artifactId>cores</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>edu.matrix.co</groupId>
+            <artifactId>services</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.matrix.co</groupId>
+            <artifactId>serviceImpl</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

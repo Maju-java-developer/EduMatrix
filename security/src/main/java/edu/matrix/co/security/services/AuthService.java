@@ -6,6 +6,7 @@ import edu.matrix.co.cores.security.dtos.LoginRequestDto;
 import edu.matrix.co.cores.security.repository.LoginRepository;
 import edu.matrix.co.cores.security.repository.UserRepository;
 import edu.matrix.co.entity.security.LoginEntity;
+import edu.matrix.co.services.authentication.OrganizationService;
 import exceptions.EduMatrixGenericException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,7 +20,7 @@ public class AuthService {
     private final JwtHelper jwt;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     private final LoginRepository loginRepository;
-
+    private final OrganizationService organizationService;
     public void loginRegister(LoginRequestDto req) {
         userRepository.findById(req.getUserId()).ifPresentOrElse(userEntity -> {
             loginRepository.findById(req.getUserId()).ifPresent(loginEntity -> {
@@ -60,8 +61,7 @@ public class AuthService {
         JwtResponse.UserDetailDto userDetails = new JwtResponse.UserDetailDto();
         userDetails.setUserName(loginUser.getUsername());
         userDetails.setUserRole(loginUser.getUserRole().name());
-        userDetails.setOrganizationId(users.getOrg().getOrgId());
-        userDetails.setOrganizationName(users.getOrg().getOrgName());
+        userDetails.setOrganizationResponseDto(organizationService.buildOrganizationData(users, loginUser.getUserRole()));
 
         // Step 5: Return structured response
         return new JwtResponse(token, userDetails);

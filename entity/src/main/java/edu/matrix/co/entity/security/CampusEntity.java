@@ -22,7 +22,7 @@ public class CampusEntity {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "school_id", nullable = false)
-    private SchoolEntity schoolEntity;
+    private SchoolEntity school;
 
     @Size(max = 200)
     @NotNull

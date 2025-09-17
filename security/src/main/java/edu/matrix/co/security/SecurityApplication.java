@@ -19,6 +19,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "edu.matrix.co.cores.security.config",
         "edu.matrix.co.cores.security.exceptions",
         "edu.matrix.co.security",
+        "edu.matrix.co.services.authentication",
+        "edu.matrix.co.serviceimpl.authentication",
         "util",
         "exceptions",
         "exceptions",
