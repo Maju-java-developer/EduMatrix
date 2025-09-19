@@ -9,10 +9,12 @@ import edu.matrix.co.entity.security.LoginEntity;
 import edu.matrix.co.services.authentication.RoleService;
 import exceptions.EduMatrixGenericException;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import util.DateUtils;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class AuthService {
@@ -23,8 +25,10 @@ public class AuthService {
     private final RoleService roleService;
 
     public void loginRegister(LoginRequestDto req) {
+        log.info("Inter login register action");
         userRepository.findById(req.getUserId()).ifPresentOrElse(userEntity -> {
             loginRepository.findByUserUserId(req.getUserId()).ifPresent(loginEntity -> {
+                log.info("User is Already registered!");
                 throw new EduMatrixGenericException("User is Already registered!");
             });
 
@@ -37,6 +41,7 @@ public class AuthService {
             loginEntity.setCreatedDate(DateUtils.getCurrentTimestamp());
             loginRepository.save(loginEntity);
         }, () -> {
+            log.info("User Not found with: {} ", req.getUsername());
             throw new EduMatrixGenericException("User not found");
         });
     }
@@ -50,6 +55,7 @@ public class AuthService {
 
         // Step 2: Validate password
         if (!encoder.matches(req.getPassword(), loginUser.getPassword())) {
+            log.info("Invalid credentials");
             throw new EduMatrixGenericException("Invalid credentials");
         }
 
