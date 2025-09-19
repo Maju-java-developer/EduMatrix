@@ -6,7 +6,7 @@ import edu.matrix.co.cores.security.dtos.LoginRequestDto;
 import edu.matrix.co.cores.security.repository.LoginRepository;
 import edu.matrix.co.cores.security.repository.UserRepository;
 import edu.matrix.co.entity.security.LoginEntity;
-import edu.matrix.co.services.authentication.OrganizationService;
+import edu.matrix.co.services.authentication.RoleService;
 import exceptions.EduMatrixGenericException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,10 +20,11 @@ public class AuthService {
     private final JwtHelper jwt;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     private final LoginRepository loginRepository;
-    private final OrganizationService organizationService;
+    private final RoleService roleService;
+
     public void loginRegister(LoginRequestDto req) {
         userRepository.findById(req.getUserId()).ifPresentOrElse(userEntity -> {
-            loginRepository.findByUserId(req.getUserId()).ifPresent(loginEntity -> {
+            loginRepository.findByUserUserId(req.getUserId()).ifPresent(loginEntity -> {
                 throw new EduMatrixGenericException("User is Already registered!");
             });
 
@@ -45,7 +46,7 @@ public class AuthService {
                 .orElseThrow(() -> new EduMatrixGenericException("Invalid credentials"));
 
         // Step 1: Validate user existence
-        userRepository.findById(loginUser.getUser().getId()).orElseThrow(() -> new EduMatrixGenericException("User not found"));
+        userRepository.findById(loginUser.getUser().getUserId()).orElseThrow(() -> new EduMatrixGenericException("User not found"));
 
         // Step 2: Validate password
         if (!encoder.matches(req.getPassword(), loginUser.getPassword())) {
@@ -61,7 +62,7 @@ public class AuthService {
         JwtResponse.UserDetailDto userDetails = new JwtResponse.UserDetailDto();
         userDetails.setUserName(loginUser.getUsername());
         userDetails.setUserRole(loginUser.getUserRole().name());
-        userDetails.setSchoolDtos(organizationService.buildOrganizationData(loginUser));
+        userDetails.setSchoolDtos(roleService.buildRoles(loginUser));
 
         // Step 5: Return structured response
         return new JwtResponse(token, userDetails);

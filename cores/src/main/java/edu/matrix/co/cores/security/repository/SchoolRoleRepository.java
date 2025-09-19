@@ -4,6 +4,7 @@ import edu.matrix.co.cores.security.dtos.MenuModuleActionDTO;
 import edu.matrix.co.entity.security.SchoolEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface SchoolRoleRepository extends JpaRepository<SchoolEntity, Long> 
                a.roleName
         )
         FROM SchoolRoleEntity m
-        LEFT JOIN SchoolRoleEntity md 
+        LEFT JOIN SchoolRoleEntity md
                ON md.parentRole.schoolRoleId = m.schoolRoleId
                AND md.roleType = enums.RoleType.MODULE
         LEFT JOIN SchoolRoleEntity a
@@ -28,5 +29,4 @@ public interface SchoolRoleRepository extends JpaRepository<SchoolEntity, Long> 
         ORDER BY m.schoolRoleId, md.schoolRoleId, a.schoolRoleId
     """)
     List<MenuModuleActionDTO> getSchoolRolesForOwner();
-
 }

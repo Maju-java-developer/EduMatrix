@@ -1,5 +1,6 @@
 package edu.matrix.co.cores.security.dtos;
 
+import enums.RoleType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +9,5 @@ import lombok.Setter;
 public class ActionDTO {
     private Long actionId;
     private String actionName;
-    private String roleType; // ACTION
+    private RoleType roleType; // ACTION
 }

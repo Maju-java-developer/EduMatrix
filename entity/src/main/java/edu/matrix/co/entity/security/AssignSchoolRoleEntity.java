@@ -1,8 +1,11 @@
 package edu.matrix.co.entity.security;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 @Table(name = "AssignSchoolRoles")
 public class AssignSchoolRoleEntity {
@@ -22,8 +25,6 @@ public class AssignSchoolRoleEntity {
     @JoinColumn(name = "SchoolId", referencedColumnName = "school_id", nullable = false)
     private SchoolEntity school;
 
-    private Integer assignedBy;
-    private LocalDateTime assignedAt;
     private Integer createdBy;
     private LocalDateTime createdDateTime;
     private Integer updatedBy;

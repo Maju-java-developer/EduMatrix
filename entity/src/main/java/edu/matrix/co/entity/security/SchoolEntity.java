@@ -18,7 +18,7 @@ import java.util.List;
 public class SchoolEntity {
     @Id
     @Column(name = "school_id", nullable = false)
-    private Long id;
+    private Long schoolId;
 
     @Size(max = 200)
     @NotNull

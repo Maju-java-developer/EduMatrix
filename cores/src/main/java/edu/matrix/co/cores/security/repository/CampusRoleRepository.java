@@ -28,4 +28,5 @@ public interface CampusRoleRepository extends JpaRepository<CampusEntity, Long> 
         ORDER BY m.campusRoleId, md.campusRoleId, a.campusRoleId
     """)
     List<MenuModuleActionDTO> getCampusRolesForOwner();
+
 }

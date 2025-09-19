@@ -17,7 +17,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
-    private Long id;
+    private Long userId;
 
     @Size(max = 150)
     @NotNull
@@ -35,10 +35,6 @@ public class UserEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "org_id")
     private OrganizationEntity organization;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "school_id")
-    private SchoolEntity schoolEntity;
 
     @NotNull
     @ColumnDefault("current_timestamp()")

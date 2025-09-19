@@ -25,8 +25,6 @@ public class AssignCampusRoleEntity {
     @JoinColumn(name = "CampusId", referencedColumnName = "campus_id", nullable = false)
     private CampusEntity campus;
 
-    private Integer assignedBy;
-    private LocalDateTime assignedAt;
     private Integer createdBy;
     private LocalDateTime createdDateTime;
     private Integer updatedBy;
