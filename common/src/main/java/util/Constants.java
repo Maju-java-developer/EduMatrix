@@ -8,6 +8,8 @@ package util;
 public class Constants {
 
     // JWT Token Claims
+    public static boolean DISABLE_ENCRYPTION_ID = true; // added flag for testing purpose:
+
     public static final String USER_RESPONSE_CLAIM = "userRespDTO";
     public static final String USER_AGENT_CLAIM = "User-Agent";
     public static final String USER_ROLES = "User-Roles";

@@ -15,6 +15,7 @@ import java.util.Base64;
 public class EncryptionUtils {
 
     static String keyText = "MOTORVEHICLEREGISTRATION";
+    private static final String ALGO = "AES";
 
     public static String encryptAES(String plainText) throws Exception {
         byte[] keyBytes = keyText.getBytes("UTF-8");
@@ -34,4 +35,31 @@ public class EncryptionUtils {
         byte[] utf8 = dcipher.doFinal(dec);
         return new String(utf8, "UTF8");
     }
+
+    private static SecretKeySpec getKey() {
+        return new SecretKeySpec(keyText.getBytes(), ALGO);
+    }
+
+    public static String encryptId(Number id) {
+        try {
+            Cipher cipher = Cipher.getInstance(ALGO);
+            cipher.init(Cipher.ENCRYPT_MODE, getKey());
+            return Base64.getUrlEncoder().withoutPadding()
+                    .encodeToString(cipher.doFinal(id.toString().getBytes()));
+        } catch (Exception e) {
+            throw new RuntimeException("Error encrypting ID", e);
+        }
+    }
+
+    public static Long decryptId(String encryptedId) {
+        try {
+            Cipher cipher = Cipher.getInstance(ALGO);
+            cipher.init(Cipher.DECRYPT_MODE, getKey());
+            String decrypted = new String(cipher.doFinal(Base64.getUrlDecoder().decode(encryptedId)));
+            return Long.valueOf(decrypted);
+        } catch (Exception e) {
+            throw new RuntimeException("Error decrypting ID", e);
+        }
+    }
+
 }
