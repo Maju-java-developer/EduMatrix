@@ -1,14 +1,13 @@
 package edu.matrix.co.cores.security.repository;
 
 import edu.matrix.co.cores.security.dtos.MenuModuleActionDTO;
-import edu.matrix.co.entity.security.SchoolEntity;
+import edu.matrix.co.entity.security.SchoolRoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SchoolRoleRepository extends JpaRepository<SchoolEntity, Long> {
+public interface SchoolRoleRepository extends JpaRepository<SchoolRoleEntity, Long> {
     @Query("""
         SELECT new edu.matrix.co.cores.security.dtos.MenuModuleActionDTO(
                m.schoolRoleId,
