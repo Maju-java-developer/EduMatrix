@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AcademicYearRepository extends JpaRepository<AcademicYearEntity, Long> {
+public interface AcademicYearRepository extends JpaRepository<AcademicYearEntity, Integer> {
     List<AcademicYearEntity> findBySchool_SchoolId(Long schoolId);
 }

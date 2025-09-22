@@ -6,11 +6,11 @@ import dtos.PaginationResponseDto;
 import java.util.List;
 import java.util.Optional;
 
-public interface GenericService<T, ID> {
-    T save(T entity);
-    Optional<T> findById(ID id);
+public interface GenericService<DTO, ID> {
+    DTO save(DTO entity);
+    DTO findById(ID id);
     void deleteById(ID id);
-    List<T> findAll();
+    List<DTO> findAll();
 
     PaginationResponseDto findAllPaginated(PaginationRequestDto requestDto);
 }
