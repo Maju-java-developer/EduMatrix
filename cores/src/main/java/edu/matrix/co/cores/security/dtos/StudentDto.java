@@ -30,6 +30,7 @@ public class StudentDto {
     @Pattern(regexp = "^[0-9]{13}$", message = "CNIC must be 13 digits")
     private String cnic;
 
+    @NotNull(message = "bloodGroup is required!")
     private String bloodGroup;
 
     private String religion;
